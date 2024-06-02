@@ -15,8 +15,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('django_restaurant_app.urls')),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
 ]
+
+    #/auth/users/ <-- For new user
+    #/auth/users/activation/ <-- For user acivation
+    #/auth/token/login/ <-- To log in (obtains an authentication token (JWT))
+    #/auth/token/logout/ <-- To log user out (invalidates the token)
+    #/auth/users/reset_password/ <-- Resets user's password
+    #/auth/users/reset_password_confirm/ <-- Confirms password reset using a token sent to user's email
+    #/auth/users/me/ <-- CRUD for user account
